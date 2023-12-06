@@ -31,5 +31,5 @@ body {
 }
 
 .user {
-  @apply p-2 bg-green-200 rounded-md w-fit text-xs self-end;
+  @apply p-2 bg-green-200 rounded-md w-fit text-xs self-end ml-auto;
 }

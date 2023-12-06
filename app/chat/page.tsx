@@ -45,13 +45,13 @@ const ChatPage = () => {
   }, [isSuccess]);
 
   return (
-    <div className="w-[350px] h-[450px] rounded-lg bg-slate-100 flex flex-col text-black">
+    <div className=" rounded-lg bg-slate-100 flex flex-col text-black">
       <div className="border-b py-3 px-4 w-full flex justify-between">
         <MessageSquare className="text-green-400" />
         <p className="text-black">CXR.Agency</p>
       </div>
 
-      <div className="h-full overflow-auto text-black flex flex-col justify-end py-2 px-2 space-y-3 max-h-[400px]">
+      <div className="h-full w-full max-h-[345px] overflow-y-auto text-black  py-2 px-2 space-y-3 ">
         {messages.map((item) => (
           <>
             {item.user != "" && <div className="user">{item.user}</div>}
