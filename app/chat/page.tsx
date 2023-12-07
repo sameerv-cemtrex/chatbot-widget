@@ -45,7 +45,7 @@ const ChatPage = () => {
   }, [isSuccess]);
 
   return (
-    <div className=" rounded-lg bg-slate-100 flex flex-col text-black">
+    <div className=" rounded-lg h-[450px] bg-slate-100 flex flex-col text-black">
       <div className="border-b py-3 px-4 w-full flex justify-between">
         <MessageSquare className="text-green-400" />
         <p className="text-black">CXR.Agency</p>
