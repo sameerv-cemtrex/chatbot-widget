@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       text: response.text,
       sourceDocuments: response.sourceDocuments,
     });
-  } catch (err) {
-    throw new Error("something went wrong ");
+  } catch (err: any) {
+    throw new Error("something went wrong ", err);
   }
 }

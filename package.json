@@ -13,6 +13,7 @@
     "@tanstack/react-query": "^5.12.2",
     "commander": "10.0.1",
     "dotenv": "16.0.3",
+    "formik": "^2.4.5",
     "fs": "^0.0.1-security",
     "langchain": "^0.0.199",
     "lucide-react": "^0.294.0",
