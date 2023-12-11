@@ -2,6 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { ArrowUpCircle, MessageSquare, MoreHorizontal, X } from "lucide-react";
 import React, { Fragment, useEffect, useState } from "react";
+import parse from "html-react-parser";
 
 type Message = {
   user: string;
@@ -26,9 +27,8 @@ const ChatPage = () => {
       const msgs: Message[] = JSON.parse(
         localStorage.getItem("messages") as string
       );
-      // const msgs = [...messages];
       const lastMessage = msgs.splice(-1, 1)[0];
-      msgs.pop();
+
       localStorage.setItem(
         "messages",
         JSON.stringify([...msgs, { ai: data.text, user: lastMessage.user }])
@@ -60,7 +60,7 @@ const ChatPage = () => {
         {messages.map((item, i) => (
           <Fragment key={i}>
             {item.user != "" && <div className="user">{item.user}</div>}
-            {item.ai != "" && <div className="ai">{item.ai}</div>}
+            {item.ai != "" && <div className="ai">{parse(item.ai)}</div>}
           </Fragment>
         ))}
         {isPending && (
