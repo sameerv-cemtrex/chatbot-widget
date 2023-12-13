@@ -3,22 +3,28 @@ import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 
 const Button = () => {
-  const [que, setQue] = useState(null);
+  const [que, setQue] = useState("");
   const { mutate, isLoading } = useMutation({
     mutationFn: async (que) => {
-      const postQuestion = await fetch("/api/chat", {
+      const postQuestion = await fetch("/api/crawl", {
         method: "POST",
-        body: JSON.stringify({ question: que }),
+        body: JSON.stringify({ url: que }),
       });
 
-      return await postQuestion;
+      const res = await postQuestion.json();
+
+      return res;
+    },
+    onSuccess: (data) => {
+      console.log(data);
     },
   });
   return (
     <>
       <input
         type="text"
-        value={que == null ? "" : que}
+        value={que}
+        placeholder="Enter url to crawl"
         onChange={(e) => setQue(e.target.value)}
         className="border border-gray-300 p-3 bg-transparent"
       />

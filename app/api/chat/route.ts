@@ -17,10 +17,14 @@ export async function POST(req: Request) {
     const client = await getPineconeClient();
     const index = await client.Index("testchatbot");
 
+    const openaiEmbeddings = new OpenAIEmbeddings({
+      openAIApiKey: OPENAI_KEY as string,
+    });
+
+    // const embeddings = await openaiEmbeddings.embedQuery(sanitizedQuestion);
+
     const vectorstore = await PineconeStore.fromExistingIndex(
-      new OpenAIEmbeddings({
-        openAIApiKey: OPENAI_KEY as string,
-      }),
+      openaiEmbeddings,
       {
         pineconeIndex: index,
         textKey: "text",

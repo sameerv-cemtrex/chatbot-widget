@@ -15,7 +15,7 @@ const ChatPage = () => {
   const [messages, setMessages] = useState<Message[]>([{ user: "", ai: "" }]);
   const { mutate, isPending, status, isSuccess } = useMutation({
     mutationFn: async (que: String) => {
-      const postQuestion = await fetch("/api/chat", {
+      const postQuestion = await fetch("/api/chat2", {
         method: "POST",
         body: JSON.stringify({ question: que }),
       });
