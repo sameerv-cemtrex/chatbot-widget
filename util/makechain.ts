@@ -38,7 +38,7 @@ export const makeChain = (
   //   modelTemperature: number
 ) => {
   const model = new OpenAI({
-    temperature: 0.4, // increase temepreature to get more creative answers
+    temperature: 0.9, // increase temepreature to get more creative answers
     modelName: "gpt-3.5-turbo", //change this to gpt-4 if you have access
     openAIApiKey: OPENAI_KEY,
   });
@@ -46,10 +46,14 @@ export const makeChain = (
   // Configures the chain to use the QA_PROMPT and CONDENSE_PROMPT prompts and to not return the source documents
   const chain = ConversationalRetrievalQAChain.fromLLM(
     model,
-    vectorstore.asRetriever(),
+    vectorstore.asRetriever(2, { metadataField: "value" }),
     {
       qaTemplate: QA_PROMPT,
       questionGeneratorTemplate: CONDENSE_PROMPT,
+      // questionGeneratorChainOptions: {
+      //   llm: questionModel,
+      //   template: CONDENSE_PROMPT,
+      // },
       returnSourceDocuments: true,
     }
   );
