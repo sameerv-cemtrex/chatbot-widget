@@ -55,6 +55,7 @@ export async function POST(req: Request) {
   When asked about company details, achievements, contributions, partners, or services search the context provided and be specific, share as many relevant details as possible from the context provided to you.
   If the query isn't related to the company or you don't have  sufficient data to reply, kindly inform the user that your don't have sufficient information for the question and provide the contact details for our agency from the context provided to you.
   When asked about the company partners you can share names and data related to them too.
+  Although whenever the user asks about our clients consider the projects as well as Brands from the context as the clients itself and answer the query accordingly. 
   Here is the context from the documents: {context}
 
   Give your response in markdown format. 

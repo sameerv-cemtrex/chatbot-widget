@@ -1,6 +1,7 @@
 import { OpenAI } from "langchain/llms/openai";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { ConversationalRetrievalQAChain } from "langchain/chains";
+import { BufferMemory } from "langchain/memory";
 
 const CONDENSE_PROMPT = `Given the chat history and a follow-up question, rephrase the follow-up question to be a standalone question that encompasses all necessary context from the chat history.
 
@@ -19,6 +20,9 @@ You are also capable of evaluating, comparing and providing opinions based on th
 When asked about company details, achievements, contributions, partners, or services search the context provided and be specific, share as many relevant details as possible from the context provided to you.
 If the query isn't related to the company or you don't have  sufficient data to reply, kindly inform the user that your don't have sufficient information for the question and provide the contact details for our agency from the context provided to you.
 When asked about the company partners you can share names and data related to them too.
+Although whenever the user asks about our clients consider the projects as well as Brands from the context as the clients itself and answer the query accordingly. 
+
+You can reply the user in the language the question is asked. 
 Here is the context from the documents:
 
 Context: {context}
@@ -38,7 +42,7 @@ export const makeChain = (
   //   modelTemperature: number
 ) => {
   const model = new OpenAI({
-    temperature: 0.9, // increase temepreature to get more creative answers
+    temperature: 0.5, // increase temepreature to get more creative answers
     modelName: "gpt-3.5-turbo", //change this to gpt-4 if you have access
     openAIApiKey: OPENAI_KEY,
   });
@@ -48,6 +52,12 @@ export const makeChain = (
     model,
     vectorstore.asRetriever(2, { metadataField: "value" }),
     {
+      memory: new BufferMemory({
+        memoryKey: "chat_history",
+        inputKey: "question", // The key for the input to the chain
+        outputKey: "text", // The key for the final conversational output of the chain
+        returnMessages: true, // If using with a chat model
+      }),
       qaTemplate: QA_PROMPT,
       questionGeneratorTemplate: CONDENSE_PROMPT,
       // questionGeneratorChainOptions: {
