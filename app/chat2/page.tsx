@@ -2,7 +2,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ArrowUpCircle, MessageSquare, MoreHorizontal, X } from "lucide-react";
 import React, { Fragment, useEffect, useState } from "react";
-import parse from "html-react-parser";
 import RenderMarkdown from "@/components/RenderMarkdown";
 
 type Message = {

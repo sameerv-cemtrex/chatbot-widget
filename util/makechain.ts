@@ -31,7 +31,7 @@ Here is the user's question:
 
 Question: {question}
 
-Provide your response in markdown format.`;
+Provide your response in a readable markdown format with frequent breaks.`;
 
 const OPENAI_KEY = process.env.OPEN_AI_API_KEY;
 

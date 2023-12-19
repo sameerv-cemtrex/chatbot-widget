@@ -20,7 +20,6 @@
     "dotenv": "16.0.3",
     "formik": "^2.4.5",
     "fs": "^0.0.1-security",
-    "html-react-parser": "^5.0.7",
     "langchain": "^0.0.199",
     "lucide-react": "^0.294.0",
     "modelfusion": "^0.89.0",
@@ -33,6 +32,7 @@
     "react-dom": "^18",
     "react-dropzone": "^14.2.3",
     "react-markdown": "^9.0.1",
+    "remarkable": "^2.0.1",
     "turndown": "^7.1.2",
     "url-parse": "^1.5.10",
     "vectra": "^0.1.2"
@@ -43,6 +43,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/remarkable": "^2.0.8",
     "@types/turndown": "^5.0.4",
     "@types/url-parse": "^1.4.11",
     "autoprefixer": "^10.0.1",

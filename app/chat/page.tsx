@@ -2,8 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { ArrowUpCircle, MessageSquare, MoreHorizontal, X } from "lucide-react";
 import React, { Fragment, useEffect, useState } from "react";
-import parse from "html-react-parser";
-import RenderMarkdown from "@/components/RenderMarkdown";
+import { Remarkable } from "remarkable";
 
 type Message = {
   user: string;
@@ -13,6 +12,11 @@ type Message = {
 const ChatPage = () => {
   const [msgInput, setMsgInput] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([{ user: "", ai: "" }]);
+  const md = new Remarkable("commonmark", {
+    breaks: true,
+    typographer: true,
+  });
+
   const { mutate, isPending, status, isSuccess } = useMutation({
     mutationFn: async (que: String) => {
       const postQuestion = await fetch("/api/chat", {
@@ -62,9 +66,12 @@ const ChatPage = () => {
           <Fragment key={i}>
             {item.user != "" && <div className="user">{item.user}</div>}
             {item.ai != "" && (
-              <div className="ai">
-                <RenderMarkdown mdString={item.ai} />
-              </div>
+              <div
+                className="ai"
+                dangerouslySetInnerHTML={{
+                  __html: md.render(item.ai.replaceAll(/\n\n/g, "<br><br>")),
+                }}
+              ></div>
             )}
           </Fragment>
         ))}
