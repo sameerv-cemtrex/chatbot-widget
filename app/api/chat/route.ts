@@ -7,6 +7,8 @@ import { makeChain } from "@/util/makechain";
 
 const OPENAI_KEY = process.env.OPEN_AI_API_KEY;
 
+export const maxDuration = 15;
+
 export async function POST(req: Request) {
   console.log("chat init");
   const body = await req.json();
