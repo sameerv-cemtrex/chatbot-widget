@@ -17,6 +17,7 @@ import { getPineconeClient } from "@/util/pinecone";
 // import { TextLoader } from "langchain/document_loaders/fs/text";
 
 const OPENAI_KEY = process.env.OPEN_AI_API_KEY;
+const PINECONE_INDEX = process.env.PINECONE_INDEX;
 
 export async function POST(req: Request) {
   console.log("indexing PDF..");
@@ -46,7 +47,7 @@ export async function POST(req: Request) {
     });
 
     const client = await getPineconeClient();
-    const index = await client.Index("testchatbot");
+    const index = await client.Index(PINECONE_INDEX as string);
     await PineconeStore.fromDocuments(docs, embeddings, {
       pineconeIndex: index,
       textKey: "text",

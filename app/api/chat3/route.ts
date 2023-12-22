@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { ConversationalRetrievalQAChain } from "langchain/chains";
-import { getPineconeClient } from "@/util/pinecone";
+import { getPineconeClient, getPineconeClient2 } from "@/util/pinecone";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { makeChain } from "@/util/makechain";
 import { Pin } from "lucide-react";
 
 const OPENAI_KEY = process.env.OPEN_AI_API_KEY;
-const PINECONE_INDEX = process.env.PINECONE_INDEX;
+const PINECONE_INDEX = process.env.PINECONE_INDEX2;
 
 export async function POST(req: Request) {
   console.log("chat init");
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   const sanitizedQuestion = question.trim().replaceAll("\n", " ");
 
   try {
-    const client = await getPineconeClient();
+    const client = await getPineconeClient2();
     const index = await client.Index(PINECONE_INDEX as string);
 
     const openaiEmbeddings = new OpenAIEmbeddings({

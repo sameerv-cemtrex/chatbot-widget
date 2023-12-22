@@ -6,3 +6,10 @@ export const getPineconeClient = () => {
     apiKey: process.env.PINECONE_API_KEY!,
   });
 };
+
+export const getPineconeClient2 = () => {
+  return new Pinecone({
+    environment: process.env.PINECONE_ENVIRONMENT!,
+    apiKey: process.env.PINECONE_API_KEY2!,
+  });
+};
