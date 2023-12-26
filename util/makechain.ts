@@ -94,10 +94,6 @@ export const makeChain = (
       }),
       qaTemplate: QA_PROMPT,
       questionGeneratorTemplate: CONDENSE_PROMPT,
-      // questionGeneratorChainOptions: {
-      //   llm: questionModel,
-      //   template: CONDENSE_PROMPT,
-      // },
       returnSourceDocuments: true,
     }
   );

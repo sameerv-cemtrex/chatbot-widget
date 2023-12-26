@@ -54,6 +54,16 @@ const ChatPage = () => {
     }
   }, [isSuccess, status]);
 
+  useEffect(() => {
+    const messageContainer = document.getElementById("message-container");
+    if (messageContainer) {
+      messageContainer.scrollTo({
+        top: messageContainer.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [messages]);
+
   return (
     <div className=" rounded-lg h-[450px] bg-slate-100 flex flex-col text-black">
       <div className="border-b py-3 px-4 w-full flex justify-between">
@@ -61,7 +71,10 @@ const ChatPage = () => {
         <p className="text-black">CXR.Agency</p>
       </div>
 
-      <div className="h-full w-full max-h-[345px] overflow-y-auto text-black  py-2 px-2 space-y-3 ">
+      <div
+        id="message-container"
+        className="h-full w-full max-h-[345px] overflow-y-auto text-black  py-2 px-2 space-y-3 "
+      >
         {messages.map((item, i) => (
           <Fragment key={i}>
             {item.user != "" && <div className="user">{item.user}</div>}

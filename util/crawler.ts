@@ -1,10 +1,7 @@
 //@ts-ignore
 import * as Spider from "node-spider";
-//@ts-ignore
-// import * as TurndownService from "turndown";
 import * as cheerio from "cheerio";
 import parse from "url-parse";
-// const turndownService = new TurndownService();
 import { NodeHtmlMarkdown, NodeHtmlMarkdownOptions } from "node-html-markdown";
 const nhm = new NodeHtmlMarkdown();
 

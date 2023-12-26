@@ -6,15 +6,9 @@ import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { DocxLoader } from "langchain/document_loaders/fs/docx";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { FaissStore } from "langchain/vectorstores/faiss";
-import fs from "fs";
-import * as path from "path";
-import { LocalIndex } from "vectra";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { WebPDFLoader } from "langchain/document_loaders/web/pdf";
 import { NextResponse } from "next/server";
 import { getPineconeClient } from "@/util/pinecone";
-// import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-// import { TextLoader } from "langchain/document_loaders/fs/text";
 
 const OPENAI_KEY = process.env.OPEN_AI_API_KEY;
 const PINECONE_INDEX = process.env.PINECONE_INDEX;

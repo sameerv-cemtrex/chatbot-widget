@@ -1,6 +1,12 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
-import { ArrowUpCircle, MessageSquare, MoreHorizontal, X } from "lucide-react";
+import {
+  ArrowUpCircle,
+  MessageSquare,
+  MoreHorizontal,
+  User,
+  X,
+} from "lucide-react";
 import React, { Fragment, useEffect, useState } from "react";
 import { Remarkable } from "remarkable";
 
@@ -54,6 +60,16 @@ const ChatPage = () => {
     }
   }, [isSuccess, status]);
 
+  useEffect(() => {
+    const messageContainer = document.getElementById("message-container");
+    if (messageContainer) {
+      messageContainer.scrollTo({
+        top: messageContainer.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [messages]);
+
   return (
     <div className=" rounded-lg h-[450px] bg-slate-100 flex flex-col text-black">
       <div className="border-b py-3 px-4 w-full flex justify-between">
@@ -61,17 +77,32 @@ const ChatPage = () => {
         <p className="text-black">CXR.Agency</p>
       </div>
 
-      <div className="h-full w-full max-h-[345px] overflow-y-auto text-black  py-2 px-2 space-y-3 ">
+      <div
+        id="message-container"
+        className="h-full w-full max-h-[345px] overflow-y-scroll text-black  py-2 px-2 space-y-3 "
+      >
         {messages.map((item, i) => (
           <Fragment key={i}>
-            {item.user != "" && <div className="user">{item.user}</div>}
+            {item.user != "" && (
+              <div className="flex space-x-2 items-end self-end ml-auto w-fit">
+                <div className="user">{item.user}</div>
+                <div className="rounded-full w-7 h-7 bg-green-500 grid place-items-center mb-1">
+                  <User size={16} color="white" />
+                </div>
+              </div>
+            )}
             {item.ai != "" && (
-              <div
-                className="ai"
-                dangerouslySetInnerHTML={{
-                  __html: md.render(item.ai.replaceAll(/\n\n/g, "<br><br>")),
-                }}
-              ></div>
+              <div className="flex space-x-2 items-end">
+                <div className="rounded-full grid place-items-center w-7 h-7 bg-white mb-1">
+                  <MessageSquare size={16} color="green" />
+                </div>
+                <div
+                  className="ai"
+                  dangerouslySetInnerHTML={{
+                    __html: md.render(item.ai.replaceAll(/\n\n/g, "<br><br>")),
+                  }}
+                ></div>
+              </div>
             )}
           </Fragment>
         ))}

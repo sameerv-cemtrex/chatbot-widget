@@ -18,6 +18,9 @@ const DropInput = () => {
   });
   return (
     <div>
+      <h2 className="text-lg mb-5 text-center">
+        Add a file to the Chatbot Dataset
+      </h2>
       <Dropzone
         onDrop={(acceptedFiles) => {
           const inputFile = acceptedFiles[0];
@@ -30,7 +33,7 @@ const DropInput = () => {
         {({ getRootProps, getInputProps }) => (
           <div
             {...getRootProps()}
-            className="border border-dotted rounded-lg p-6 w-[30vw] text-xl"
+            className="border border-dotted border-gray-700 dark:border-gray-200 rounded-lg p-6 w-[30vw] text-xl"
           >
             <input {...getInputProps()} />
             <p className="text-center">Drop your file here</p>
@@ -43,10 +46,10 @@ const DropInput = () => {
           </div>
         )}
       </Dropzone>
-      {isPending && <Loader2 className="animate-spin text-emerald-500" />}
+      {isPending && <Loader2 className="animate-spin text-emerald-500 mt-5" />}
 
       {isSuccess && (
-        <div>
+        <div className="mt-5">
           <CheckCircle color="green" />
           <p className="text-green-400">Pdf uploaded.</p>
         </div>
