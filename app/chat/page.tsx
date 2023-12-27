@@ -44,7 +44,6 @@ const ChatPage = () => {
         "messages",
         JSON.stringify([...msgs, { ai: data.text, user: lastMessage.user }])
       );
-      setMsgInput("");
     },
   });
 
@@ -124,6 +123,7 @@ const ChatPage = () => {
             "messages",
             JSON.stringify([...messages, { user: msgInput, ai: "" }])
           );
+          setMsgInput("");
         }}
       >
         <div className="m-2 bg-white p-2 rounded-lg flex space-x-2">
