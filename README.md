@@ -31,4 +31,8 @@ Now you can redirect to the chat page - [http://localhost:3000/chat](http://loca
 
 Here you can test the bot for answers.
 
-Now Copy the loader.js file and upload on the CDN provider. The link to this file on the cloud will be your embedding link of the chatbot. You can now use this embedding link in any other project to use the chatbot.
+## Bot Loader Embed Link
+
+In the `bot-loader.js` file, put the link of the hosted widget, in the **widgetUrl** variable.
+
+Now Copy the bot-loader.js file and upload on the CDN provider. The link to this file on the cloud will be your embedding link of the chatbot. You can now use this embedding link in any other project to use the chatbot.
