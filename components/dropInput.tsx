@@ -1,6 +1,7 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
 import { CheckCircle, Loader2 } from "lucide-react";
+import Head from "next/head";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 
@@ -18,6 +19,11 @@ const DropInput = () => {
   });
   return (
     <div>
+      <Head>
+        <meta property="og:title" content="File upload for the chatbot." />
+        <meta property="og:image" content="botimage.png" />
+        <meta property="og:type" content="summary" />
+      </Head>
       <h2 className="text-lg mb-5 text-center">
         Add a file to the Chatbot Dataset
       </h2>

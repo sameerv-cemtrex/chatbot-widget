@@ -1,34 +1,34 @@
-## Getting Started
+# CXR.Agency Chatbot
 
-First, run the development server:
+A chatbot that uses OpenAI's GPT-3.5 turbo model, to answer customer queries. The bot is trained over a dataset that comprises of various PDF files that contain information about the company, achievements, services and projects that the company has undertaken.
+
+
+## Requirements
+
+For this project you will need API keys from OpenAi and Pinecone.
+
+<br>
+<br>
+
+## Setup
+
+First clone this repo and make a copy of all the variables in `.env.example` into `.env.local` file, and fill the variables respectively.
+
+
+Then, you can run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Here on this page you can upload the PDF files into the Database. Here vector embeddings will be created inserted in the Pincone DB.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Now you can redirect to the chat page - [http://localhost:3000/chat](http://localhost:3000/chat)
 
-## Learn More
+Here you can test the bot for answers.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Now Copy the loader.js file and upload on the CDN provider. The link to this file on the cloud will be your embedding link of the chatbot. You can now use this embedding link in any other project to use the chatbot.
